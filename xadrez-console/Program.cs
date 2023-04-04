@@ -7,7 +7,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
     internal class Program
     {
         static void Main(string[] args)
-        {
+        {/**
             try
             {
                 Tabuleiro tab = new Tabuleiro(8, 8);
@@ -19,6 +19,11 @@ namespace MyApp // Note: actual namespace depends on the project name.
             }catch (TabuleiroException te) {
                 Console.WriteLine(te.Message);
             }
+            **/
+
+            PosicaoXadrez pos = new PosicaoXadrez('c', 7);
+            Console.WriteLine( pos);
+            Console.WriteLine(pos.toPosicao());
 
             Console.ReadLine();
         }
