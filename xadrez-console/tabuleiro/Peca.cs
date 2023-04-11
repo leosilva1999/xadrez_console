@@ -17,15 +17,14 @@ namespace tabuleiro
             Tab = tab;
             QteMovimentos = 0;
         }
-
-        public abstract bool[,] movimentosPossiveis();
-        
-
         public void incrementarQteMovimentos()
         {
             QteMovimentos++;
         }
 
-        public abstract bool[,] movimentoPossiveis();
+        public abstract bool[,] movimentosPossiveis();
+        
+
+
     }
 }
