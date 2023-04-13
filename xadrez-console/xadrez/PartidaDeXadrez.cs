@@ -55,6 +55,7 @@ namespace xadrez
         {
             Peca pecaCapturada = executaMovimento(origem, destino);
 
+
             if (estaEmXeque(jogadorAtual))
             {
                 desfazMovimento(origem, destino, pecaCapturada);
@@ -115,12 +116,14 @@ namespace xadrez
 
         public HashSet<Peca> pecasEmJogo(Cor cor)
         {
-            HashSet<Peca> aux = new HashSet<Peca>();
-            foreach (Peca x in capturadas)
-            {
+            HashSet<Peca> aux = new HashSet<Peca>();           
+            foreach (Peca x in pecas)
+            {               
                 if (x.Cor == cor)
+                {
                     aux.Add(x);
-            }
+                }
+            }            
             aux.ExceptWith(pecasCapturadas(cor));
             return aux;
         }
@@ -136,10 +139,10 @@ namespace xadrez
         private Peca rei(Cor cor)
         {
             foreach(Peca x in pecasEmJogo(cor))
-            {
-                if(x is Rei)
+            {               
+                if (x is Rei)
                 {
-                    return x;
+                    return x;       
                 }
             }
             return null;
@@ -148,12 +151,13 @@ namespace xadrez
         public bool estaEmXeque(Cor cor)
         {
             Peca R = rei(cor);
-            /**if (R == null)
-                throw new TabuleiroException($"Não tem rei da cor {cor} no tabuleiro!");**/
+            if (R == null)
+            {
+                throw new TabuleiroException($"Não tem rei da cor {cor} no tabuleiro!");
+            }
 
             foreach(Peca x in pecasEmJogo(adversaria(cor)))
             {
-
                 bool[,] mat = x.movimentosPossiveis();
                 if (mat[R.Posicao.Linha, R.Posicao.Coluna])
                 {
