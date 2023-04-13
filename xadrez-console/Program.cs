@@ -10,7 +10,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
         {
             try
             {
-                PartidaDeXadrez partida =  new PartidaDeXadrez();
+                PartidaDeXadrez partida = new PartidaDeXadrez();
 
                 while (!partida.terminada)
                 {
@@ -33,19 +33,22 @@ namespace MyApp // Note: actual namespace depends on the project name.
                         Console.Write("Destino: ");
                         Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
                         partida.validarPosicaoDeDestino(origem, destino);
-                
+
                         partida.realizajogada(origem, destino);
-                    }catch(TabuleiroException te)
+                    }
+                    catch (TabuleiroException te)
                     {
                         Console.WriteLine(te.Message);
                         Console.ReadLine();
                     }
                 }
-                
-                Tela.imprimirTabuleiro(partida.tab);
-            }catch (TabuleiroException te) {
+                Console.Clear();
+                Tela.imprimirPartida(partida);
+            }
+            catch (TabuleiroException te)
+            {
                 Console.WriteLine(te.Message);
-            }                   
+            }
 
             Console.ReadLine();
         }
